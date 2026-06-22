@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SummaOps | Aplicaciones con IA para operaciones y desempeño</title>
+  <meta name="description" content="Soluciones para ordenar operaciones, automatizar seguimientos y gestionar evaluación de desempeño, con módulos adaptables según las necesidades reales de cada empresa.">  <style>
+/* SummaOps static website v1 */
+
+:root {
+  --navy: #0F1941;
+  --aqua: #B9E1DC;
+  --yellow: #F0E67D;
+  --brown: #3C322D;
+  --cream: #F5F5EB;
+  --white: #FFFFFF;
+  --muted: rgba(15, 25, 65, 0.72);
+  --shadow: 0 24px 80px rgba(15, 25, 65, 0.14);
+  --radius-xl: 32px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --container: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--navy);
+  background: var(--cream);
+  line-height: 1.55;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(185, 225, 220, .52), rgba(185, 225, 220, 0));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+h1 {
+  font-size: clamp(3.2rem, 7vw, 6.4rem);
+  max-width: 770px;
+}
+
+h2 {
+  font-size: clamp(2.35rem, 4.6vw, 4.5rem);
+}
+
+h3 {
+  margin: 0 0 10px;
+  line-height: 1.15;
+}
+
+p {
+  margin: 0;
+}
+
+.lead {
+  margin-top: 28px;
+  max-width: 700px;
+  font-size: clamp(1.08rem, 1.65vw, 1.35rem);
+  color: var(--muted);
+}
+
+.lead-small {
+  margin: 18px 0 28px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  font-size: .78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--brown);
+}
+
+.dark .eyebrow,
+.contact .eyebrow {
+  color: var(--yellow);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 5vw;
+  background: rgba(245, 245, 235, 0.90);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(15, 25, 65, 0.08);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--yellow);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: .92rem;
+  font-weight: 700;
+}
+
+.site-nav a {
+  color: rgba(15, 25, 65, .80);
+}
+
+.site-nav a:hover {
+  color: var(--navy);
+}
+
+.nav-cta {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--cream) !important;
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px auto;
+  background: var(--navy);
+  transition: .2s ease;
+}
+
+.hero {
+  padding-top: 76px;
+}
+
+.hero::before {
+  right: -120px;
+  top: 120px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  align-items: center;
+  gap: 54px;
+}
+
+.hero-visual {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--white);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 900;
+  border: 1px solid transparent;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button.primary {
+  background: var(--navy);
+  color: var(--cream);
+  box-shadow: 0 14px 34px rgba(15, 25, 65, .20);
+}
+
+.button.secondary {
+  border-color: rgba(15, 25, 65, .18);
+  color: var(--navy);
+  background: rgba(255, 255, 255, .42);
+}
+
+.button.secondary.light {
+  border-color: rgba(245, 245, 235, .30);
+  color: var(--cream);
+  background: rgba(245, 245, 235, .08);
+}
+
+.dark {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.dark::before {
+  left: -150px;
+  bottom: -120px;
+  background: radial-gradient(circle, rgba(240, 230, 125, .28), rgba(240, 230, 125, 0));
+}
+
+.dark .section-heading p,
+.dark .card p,
+.dark .experience-copy,
+.dark .stats span {
+  color: rgba(245, 245, 235, .76);
+}
+
+.section-heading {
+  max-width: 900px;
+  margin-bottom: 44px;
+}
+
+.section-heading.narrow {
+  max-width: 780px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-heading p {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.cards {
+  display: grid;
+  gap: 18px;
+}
+
+.cards.six {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card,
+.solution-card,
+.testimonial-card,
+.steps article,
+.method-line article,
+.contact-form {
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, .78);
+  border: 1px solid rgba(15, 25, 65, .08);
+  box-shadow: 0 14px 44px rgba(15, 25, 65, .06);
+}
+
+.dark .card {
+  background: rgba(245, 245, 235, .08);
+  border-color: rgba(245, 245, 235, .14);
+}
+
+.card {
+  padding: 26px;
+}
+
+.card p {
+  color: var(--muted);
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.solution-card {
+  padding: 32px;
+  min-height: 260px;
+}
+
+.solution-card.highlight {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.solution-card.highlight p {
+  color: rgba(245, 245, 235, .78);
+}
+
+.solution-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: var(--aqua);
+  color: var(--navy);
+  font-weight: 900;
+}
+
+.solution-card p {
+  color: var(--muted);
+}
+
+.split-section::before {
+  right: -180px;
+  top: 80px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 58px;
+}
+
+.split.reverse {
+  grid-template-columns: 1.05fr 0.95fr;
+}
+
+.alt {
+  background: rgba(185, 225, 220, .22);
+}
+
+.mockup-panel {
+  border-radius: var(--radius-xl);
+  padding: 12px;
+  background: rgba(255, 255, 255, .70);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.mockup-panel img {
+  border-radius: 24px;
+}
+
+.feature-list {
+  display: grid;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.feature-list article {
+  padding-left: 18px;
+  border-left: 4px solid var(--aqua);
+}
+
+.feature-list p {
+  color: var(--muted);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.tag-list span {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 25, 65, .08);
+  color: var(--navy);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.steps article {
+  padding: 26px;
+}
+
+.steps span,
+.method-line span {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--yellow);
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.steps p,
+.method-line p {
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.method {
+  background: var(--aqua);
+}
+
+.method::before {
+  left: -120px;
+  top: -100px;
+  background: radial-gradient(circle, rgba(245, 245, 235, .80), rgba(245, 245, 235, 0));
+}
+
+.method-line {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.method-line article {
+  padding: 24px;
+  background: rgba(245, 245, 235, .82);
+}
+
+.visual-phrase {
+  margin-top: 34px;
+  text-align: center;
+  font-weight: 900;
+  color: var(--navy);
+}
+
+.experience-copy {
+  max-width: 850px;
+  margin-bottom: 36px;
+  font-size: 1.08rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.stats article {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(245, 245, 235, .08);
+  border: 1px solid rgba(245, 245, 235, .14);
+}
+
+.stats strong {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 8px;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1.25fr .85fr;
+  gap: 22px;
+}
+
+.testimonial-card {
+  margin: 0;
+  padding: 32px;
+}
+
+.testimonial-card.featured {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.testimonial-card p {
+  font-size: 1.05rem;
+}
+
+.testimonial-card footer {
+  margin-top: 26px;
+}
+
+.testimonial-card footer span {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+}
+
+.testimonial-card.featured footer span {
+  color: rgba(245, 245, 235, .70);
+}
+
+.about {
+  background: rgba(185, 225, 220, .16);
+}
+
+.about-copy p + p {
+  margin-top: 18px;
+  color: var(--muted);
+}
+
+.about-image {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  max-height: 620px;
+  background: var(--navy);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.contact::before {
+  right: -130px;
+  bottom: -140px;
+  background: radial-gradient(circle, rgba(240, 230, 125, .32), rgba(240, 230, 125, 0));
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.contact p {
+  margin-top: 18px;
+  color: rgba(245, 245, 235, .78);
+  font-size: 1.08rem;
+}
+
+.contact-form {
+  padding: 28px;
+  background: rgba(245, 245, 235, .08);
+  border-color: rgba(245, 245, 235, .16);
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(245, 245, 235, .18);
+  border-radius: 14px;
+  background: rgba(245, 245, 235, .95);
+  color: var(--navy);
+  font: inherit;
+}
+
+.form-note {
+  font-size: .82rem !important;
+  color: rgba(245, 245, 235, .58) !important;
+}
+
+.tally-embed-card iframe {
+  display: block;
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+}
+
+.tally-embed-card .form-note a {
+  color: var(--cream);
+  text-decoration: underline;
+}
+
+.site-footer {
+  padding: 28px 0;
+  background: #0A102C;
+  color: var(--cream);
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+}
+
+.site-footer p {
+  color: rgba(245, 245, 235, .62);
+  margin-top: 4px;
+}
+
+.site-footer a {
+  color: var(--aqua);
+  font-weight: 900;
+}
+
+@media (max-width: 980px) {
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .site-nav {
+    position: fixed;
+    top: 74px;
+    left: 20px;
+    right: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 22px;
+    border-radius: 24px;
+    background: var(--cream);
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .hero-grid,
+  .split,
+  .split.reverse,
+  .contact-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards.six,
+  .solution-grid,
+  .steps,
+  .method-line,
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reverse .mockup-panel {
+    order: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .container {
+    width: min(100% - 28px, var(--container));
+  }
+
+  .cards.six,
+  .solution-grid,
+  .steps,
+  .method-line,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    padding: 14px 18px;
+  }
+
+  .hero {
+    padding-top: 54px;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  h2 {
+    font-size: clamp(2.1rem, 10vw, 3.2rem);
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+  
+/* --- SummaOps v5: tipografía de marca corregida --- */
+/* Aproximación web a IvyPresto + Cabinet/Roboto sin archivos de fuente privados */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --font-title: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.brand,
+.brand.wordmark-only {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 2.7vw, 2.55rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  color: var(--navy);
+}
+
+.brand-mark {
+  display: none !important;
+}
+
+h1, h2 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: -0.052em;
+}
+
+h1 {
+  font-size: clamp(3.4rem, 5.3vw, 5.7rem);
+  line-height: .92;
+  max-width: 760px;
+}
+
+h2 {
+  font-size: clamp(2.45rem, 4.4vw, 4.3rem);
+  line-height: .96;
+}
+
+h3,
+.site-nav,
+.button,
+.eyebrow,
+.tag-list span,
+.solution-number {
+  font-family: var(--font-body);
+}
+
+.site-header {
+  min-height: 84px;
+  padding: 16px 5vw;
+}
+
+.site-nav {
+  font-size: .94rem;
+  gap: 20px;
+  font-weight: 800;
+}
+
+.nav-cta {
+  padding: 12px 22px;
+}
+
+.hero {
+  padding-top: 58px;
+  padding-bottom: 78px;
+}
+
+.hero-grid {
+  grid-template-columns: .9fr 1.1fr;
+  gap: 50px;
+}
+
+.lead {
+  max-width: 650px;
+  font-size: clamp(1.02rem, 1.24vw, 1.18rem);
+  line-height: 1.58;
+}
+
+.eyebrow {
+  letter-spacing: .17em;
+}
+
+.hero-visual {
+  transform: none;
+}
+
+.about .split {
+  grid-template-columns: 1fr;
+}
+
+.about-image {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: clamp(3rem, 10vw, 4.9rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .brand,
+  .brand.wordmark-only {
+    font-size: 1.55rem;
+  }
+  h1 {
+    font-size: clamp(2.75rem, 14vw, 4rem);
+  }
+}
+
+  
+/* --- Ajuste final tamaño hero --- */
+h1 {
+  font-size: clamp(2.45rem, 3.75vw, 4.05rem) !important;
+  line-height: 1.02 !important;
+  max-width: 680px !important;
+}
+
+.hero-grid {
+  grid-template-columns: 0.92fr 1.08fr !important;
+  gap: 48px !important;
+}
+
+@media (max-width: 980px) {
+  h1 {
+    font-size: clamp(2.35rem, 8.5vw, 3.7rem) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: clamp(2.2rem, 11vw, 3.15rem) !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand wordmark-only" href="#inicio" aria-label="SummaOps inicio">
+      <span>SummaOps</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" aria-label="Menú principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#soluciones">Soluciones</a>
+      <a href="#operaciones">Operaciones</a>
+      <a href="#desempeno">Desempeño</a>
+      <a href="#metodo">Método</a>
+      <a href="#sobre">Sobre SummaOps</a>
+      <a class="nav-cta" href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Aplicaciones operativas potenciadas con IA</p>
+          <h1>Ordená, automatizá y medí tu operación con aplicaciones potenciadas por IA.</h1>
+          <p class="lead">Soluciones para ordenar operaciones, automatizar seguimientos y gestionar evaluación de desempeño, con módulos adaptables según las necesidades reales de cada empresa.</p>
+          <div class="actions">
+            <a class="button primary" href="#formulario-summaops">Quiero evaluar una solución</a>
+            <a class="button secondary" href="#soluciones">Ver soluciones</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/mockups/hero-summaops.png" alt="Mockup conceptual de las soluciones SummaOps Operaciones y SummaOps Desempeño">
+        </div>
+      </div>
+    </section>
+
+    <section id="necesidades" class="section dark">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Necesidades que resolvemos</p>
+          <h2>Cuando la operación crece, también necesita mejores herramientas.</h2>
+          <p>A medida que una empresa suma clientes, tareas, personas o procesos, aparecen nuevas necesidades de seguimiento, visibilidad, automatización y medición.</p>
+        </div>
+
+        <div class="cards six">
+          <article class="card">
+            <h3>Seguimientos con más trazabilidad</h3>
+            <p>Clientes, tareas, oportunidades o casos pueden necesitar un sistema más claro para saber estado, responsable y próximos pasos.</p>
+          </article>
+          <article class="card">
+            <h3>Información más integrada</h3>
+            <p>Cuando la información está en distintos lugares, ordenar datos y registros ayuda a trabajar con más claridad.</p>
+          </article>
+          <article class="card">
+            <h3>Procesos más claros y compartidos</h3>
+            <p>Documentar, sistematizar y automatizar ayuda a que la operación tenga criterios comunes y sea más fácil de sostener.</p>
+          </article>
+          <article class="card">
+            <h3>Más visibilidad para decidir</h3>
+            <p>Tener información disponible y medible facilita priorizar, detectar oportunidades y accionar a tiempo.</p>
+          </article>
+          <article class="card">
+            <h3>Automatización de tareas repetitivas</h3>
+            <p>Muchas tareas administrativas, recordatorios, reportes o seguimientos pueden simplificarse con automatizaciones.</p>
+          </article>
+          <article class="card">
+            <h3>Evaluación de desempeño más ordenada</h3>
+            <p>Objetivos, feedback, competencias y planes de mejora pueden gestionarse de forma más clara y sistemática.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones" class="section">
+      <div class="container">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Soluciones SummaOps</p>
+          <h2>Soluciones con IA para ordenar y automatizar procesos reales.</h2>
+          <p>SummaOps parte de dos soluciones base —Operaciones y Desempeño— que pueden adaptarse con módulos de IA según lo que cada empresa necesita ordenar, automatizar o medir.</p>
+        </div>
+
+        <div class="solution-grid">
+          <article class="solution-card">
+            <span class="solution-number">01</span>
+            <h3>SummaOps Operaciones</h3>
+            <p>Para gestionar clientes, tareas, soporte, oportunidades y procesos internos desde un sistema claro y medible.</p>
+          </article>
+          <article class="solution-card">
+            <span class="solution-number">02</span>
+            <h3>SummaOps Desempeño</h3>
+            <p>Para ordenar evaluaciones de desempeño, objetivos, feedback, competencias y planes de mejora.</p>
+          </article>
+          <article class="solution-card highlight">
+            <span class="solution-number">03</span>
+            <h3>Módulos adaptables con IA</h3>
+            <p>Para sumar automatizaciones, reportes, alertas, recordatorios, resúmenes o flujos específicos según cada necesidad.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="operaciones" class="section split-section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Solución 01</p>
+          <h2>SummaOps Operaciones</h2>
+          <p class="lead-small">Una solución para gestionar seguimientos, tareas, clientes, oportunidades, soporte y procesos internos desde un sistema simple, claro y medible.</p>
+
+          <div class="feature-list">
+            <article>
+              <h3>Centralizar información operativa</h3>
+              <p>Reunir en un mismo lugar datos clave sobre clientes, tareas, casos, oportunidades o procesos.</p>
+            </article>
+            <article>
+              <h3>Dar seguimiento con más claridad</h3>
+              <p>Visualizar estados, responsables, fechas, prioridades y próximos pasos.</p>
+            </article>
+            <article>
+              <h3>Automatizar recordatorios y alertas</h3>
+              <p>Reducir tareas manuales vinculadas al seguimiento operativo.</p>
+            </article>
+            <article>
+              <h3>Medir actividad y avances</h3>
+              <p>Contar con información ordenada para revisar gestión, carga de trabajo y evolución.</p>
+            </article>
+            <article>
+              <h3>Adaptar módulos según el proceso</h3>
+              <p>Configurar la solución para seguimiento comercial, soporte, reclamos, postventa, cobranzas o tareas internas.</p>
+            </article>
+          </div>
+
+          <div class="tag-list" aria-label="Casos de uso SummaOps Operaciones">
+            <span>Seguimiento comercial</span>
+            <span>Llamadas en frío</span>
+            <span>Soporte</span>
+            <span>Reclamos</span>
+            <span>Postventa</span>
+            <span>Cobranzas</span>
+            <span>Gestión de tareas</span>
+            <span>Procesos administrativos</span>
+          </div>
+        </div>
+
+        <div class="mockup-panel">
+          <img src="assets/mockups/summaops-operaciones.png" alt="Mockup conceptual de SummaOps Operaciones">
+        </div>
+      </div>
+    </section>
+
+    <section id="desempeno" class="section split-section alt">
+      <div class="container split reverse">
+        <div class="mockup-panel">
+          <img src="assets/mockups/summaops-desempeno.png" alt="Mockup conceptual de SummaOps Desempeño">
+        </div>
+
+        <div>
+          <p class="eyebrow">Solución 02</p>
+          <h2>SummaOps Desempeño</h2>
+          <p class="lead-small">Una solución para ordenar evaluaciones de desempeño, objetivos, competencias, feedback y planes de mejora desde un sistema simple y adaptable.</p>
+
+          <div class="feature-list">
+            <article>
+              <h3>Organizar evaluaciones</h3>
+              <p>Centralizar autoevaluaciones, evaluaciones de líderes y registros de desempeño.</p>
+            </article>
+            <article>
+              <h3>Dar seguimiento a objetivos</h3>
+              <p>Visualizar metas, avances, acuerdos y próximos pasos.</p>
+            </article>
+            <article>
+              <h3>Trabajar competencias</h3>
+              <p>Definir competencias clave por rol, equipo o etapa de desarrollo.</p>
+            </article>
+            <article>
+              <h3>Registrar feedback y acuerdos</h3>
+              <p>Documentar conversaciones, fortalezas, oportunidades de mejora y compromisos.</p>
+            </article>
+            <article>
+              <h3>Generar reportes claros</h3>
+              <p>Contar con información ordenada para acompañar decisiones de desarrollo, liderazgo y gestión de personas.</p>
+            </article>
+          </div>
+
+          <div class="tag-list" aria-label="Casos de uso SummaOps Desempeño">
+            <span>Evaluación de desempeño</span>
+            <span>Autoevaluaciones</span>
+            <span>Feedback de líderes</span>
+            <span>Seguimiento de objetivos</span>
+            <span>Competencias por rol</span>
+            <span>Planes de mejora</span>
+            <span>Desarrollo de personas</span>
+            <span>Reportes para RRHH o dirección</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modulos" class="section dark">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">IA aplicada</p>
+          <h2>Módulos adaptables con IA</h2>
+          <p>A partir de SummaOps Operaciones y SummaOps Desempeño, podemos sumar módulos y automatizaciones para responder a necesidades específicas de cada empresa.</p>
+        </div>
+
+        <div class="cards six">
+          <article class="card">
+            <h3>Alertas y recordatorios</h3>
+            <p>Para que próximos pasos, vencimientos o tareas importantes no dependan solo del seguimiento manual.</p>
+          </article>
+          <article class="card">
+            <h3>Reportes y tableros</h3>
+            <p>Para visualizar actividad, avances, cargas de trabajo, indicadores o resultados.</p>
+          </article>
+          <article class="card">
+            <h3>Resúmenes automáticos</h3>
+            <p>Para sintetizar información de casos, clientes, conversaciones, evaluaciones o seguimientos.</p>
+          </article>
+          <article class="card">
+            <h3>Clasificación de información</h3>
+            <p>Para ordenar casos, tareas, solicitudes o registros según criterios definidos.</p>
+          </article>
+          <article class="card">
+            <h3>Mensajes sugeridos</h3>
+            <p>Para apoyar comunicaciones comerciales, de soporte, seguimiento o feedback.</p>
+          </article>
+          <article class="card">
+            <h3>Flujos personalizados</h3>
+            <p>Para adaptar etapas, estados, responsables y automatizaciones al proceso real de la empresa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section">
+      <div class="container">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Cómo funciona</p>
+          <h2>De una necesidad concreta a una solución funcionando</h2>
+          <p>Partimos de un proceso real de tu empresa y diseñamos una primera solución útil, simple y fácil de adoptar. Después se puede ajustar, ampliar o automatizar según el uso y la evolución del negocio.</p>
+        </div>
+
+        <div class="steps">
+          <article>
+            <span>1</span>
+            <h3>Entendemos el proceso</h3>
+            <p>En una primera reunión relevamos cómo trabajan hoy, qué necesitan seguir, medir o automatizar y qué resultado quieren lograr.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Definimos la primera solución</h3>
+            <p>Diseñamos una versión inicial enfocada en resolver una necesidad concreta, sin sumar complejidad innecesaria.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Configuramos la aplicación</h3>
+            <p>Armamos campos, vistas, estados, responsables, alertas, automatizaciones y reportes básicos.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Probamos con usuarios reales</h3>
+            <p>Validamos que la solución sea clara, útil y fácil de usar para quienes la van a sostener en el día a día.</p>
+          </article>
+          <article>
+            <span>5</span>
+            <h3>Ajustamos y evolucionamos</h3>
+            <p>Mejoramos la solución según el uso real y sumamos nuevos módulos o automatizaciones cuando aportan valor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="section method">
+      <div class="container">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Método propio</p>
+          <h2>Método S.U.M.M.A.</h2>
+          <p>Una forma simple de pasar de una necesidad operativa concreta a una solución funcionando, medible y adaptable.</p>
+        </div>
+
+        <div class="method-line" aria-label="Método S.U.M.M.A.">
+          <article>
+            <span>S</span>
+            <h3>Situación actual</h3>
+            <p>Entendemos rápidamente cómo funciona hoy el proceso y qué necesita ordenar, automatizar o medir la empresa.</p>
+          </article>
+          <article>
+            <span>U</span>
+            <h3>Ubicar la necesidad principal</h3>
+            <p>Identificamos dónde puede generarse mayor valor inicial: seguimiento, trazabilidad, automatización, medición o gestión interna.</p>
+          </article>
+          <article>
+            <span>M</span>
+            <h3>Mapa de solución</h3>
+            <p>Diseñamos una primera versión clara de la aplicación, módulo o automatización.</p>
+          </article>
+          <article>
+            <span>M</span>
+            <h3>Montaje acompañado</h3>
+            <p>Configuramos la solución, la probamos con usuarios reales y acompañamos la adopción inicial.</p>
+          </article>
+          <article>
+            <span>A</span>
+            <h3>Ajuste y evolución</h3>
+            <p>Medimos el uso, ajustamos lo necesario y definimos próximos módulos o mejoras.</p>
+          </article>
+        </div>
+
+        <p class="visual-phrase">Entender → Priorizar → Configurar → Probar → Evolucionar</p>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section dark experience">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Experiencia aplicada</p>
+          <h2>Experiencia operativa aplicada a soluciones con IA</h2>
+          <p>SummaOps combina experiencia real en operaciones, atención al cliente, ventas, liderazgo y desarrollo de equipos con herramientas de IA y automatización.</p>
+        </div>
+
+        <p class="experience-copy">No partimos de la tecnología por la tecnología. Partimos de entender cómo trabajan las personas, dónde se necesita más seguimiento y qué procesos pueden simplificarse para ganar claridad, eficiencia y capacidad de decisión.</p>
+
+        <div class="stats">
+          <article>
+            <strong>20+ años</strong>
+            <span>En operaciones, atención al cliente, ventas, CX y liderazgo.</span>
+          </article>
+          <article>
+            <strong>600+ personas</strong>
+            <span>En equipos operativos liderados y acompañados.</span>
+          </article>
+          <article>
+            <strong>LATAM</strong>
+            <span>Experiencia en operaciones regionales y contextos de crecimiento.</span>
+          </article>
+          <article>
+            <strong>Procesos + IA + adopción</strong>
+            <span>Soluciones pensadas para que los equipos realmente las usen.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonios" class="section testimonials">
+      <div class="container">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Testimonios</p>
+          <h2>Lo que dicen quienes trabajaron con nosotros</h2>
+        </div>
+
+        <div class="testimonial-grid">
+          <blockquote class="testimonial-card featured">
+            <p>“Pablo es un profesional altamente dedicado, enfocado en generar resultados y hacer crecer a las empresas de forma pragmática y eficiente. Tiene una combinación poco habitual de liderazgo, experiencia y capacidad para capitalizarla. Su participación fue muy valiosa en la mejora de procesos de Verde.”</p>
+            <footer>
+              <strong>Mariana Pereyra</strong>
+              <span>Gerente Comercial de VERDE durante la consultoría realizada por SummaOps</span>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial-card">
+            <p>“Pablo me brindó herramientas para gestionarme mejor en el ámbito laboral y personal. Destaco su calidad humana, su forma de comunicarse y su capacidad para ayudarte a ver tus fortalezas y potenciarlas.”</p>
+            <footer>
+              <strong>Matías Farher</strong>
+              <span>VMO PS Sr Analyst / Facilitador / Líder de equipos multidisciplinarios</span>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section about">
+      <div class="container split">
+        <div class="about-copy">
+          <p class="eyebrow">Sobre SummaOps</p>
+          <h2>Operaciones, IA y adopción real.</h2>
+          <p>SummaOps desarrolla aplicaciones operativas potenciadas con IA para ayudar a empresas a ordenar procesos, automatizar seguimientos y mejorar su capacidad de gestión.</p>
+          <p>Combinamos experiencia real en operaciones, atención al cliente, ventas, liderazgo y desarrollo de equipos con herramientas de automatización e inteligencia artificial. El foco no está en sumar tecnología por moda, sino en crear soluciones simples, útiles y fáciles de adoptar.</p>
+          <p>La empresa es liderada por <strong>Pablo Kerekes</strong>, consultor en operaciones, CX y liderazgo, con más de 20 años de experiencia en organizaciones de alto crecimiento, operaciones regionales y emprendimientos propios.</p>
+        </div>
+        <div class="about-image">
+          <img src="assets/images/pablo-kerekes.jpg" alt="Pablo Kerekes, líder de SummaOps">
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Contacto</p>
+          <h2>Empezá por ordenar un proceso</h2>
+          <p>Agendemos una primera conversación para entender qué necesitás mejorar y evaluar una solución simple, útil y fácil de implementar.</p>
+          <div class="actions">
+            <a class="button primary" href="mailto:contacto@summaops.com?subject=Quiero%20evaluar%20una%20soluci%C3%B3n%20SummaOps">Quiero evaluar una solución</a>
+            <a class="button secondary light" href="mailto:contacto@summaops.com?subject=Agendar%20reuni%C3%B3n%20SummaOps">Agendar una reunión</a>
+          </div>
+        </div>
+
+        <div id="formulario-summaops" class="contact-form tally-embed-card">
+          <iframe
+            src="https://tally.so/embed/WOQq1R?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            width="100%"
+            height="560"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="Contacto SummaOps">
+          </iframe>
+          <p class="form-note">También podés escribirnos a <a href="mailto:contacto@summaops.com">contacto@summaops.com</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>SummaOps</strong>
+        <p>Aplicaciones operativas potenciadas con IA.</p>
+      </div>
+      <div>
+        <a href="#inicio">Volver arriba</a>
+      </div>
+    </div>
+  </footer>
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const siteNav = document.querySelector('.site-nav');
+if (navToggle && siteNav) {
+  navToggle.addEventListener('click', () => {
+    const open = siteNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  siteNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+</script>
+
+</body>
+</html>
